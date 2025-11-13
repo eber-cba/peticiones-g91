@@ -49,3 +49,15 @@ export const actualizarCliente = async (req, res) => {
     res.status(500).json({ error: "Error al actualizar cliente" });
   }
 };
+
+// DELETE /clientes/:id -> controller
+export const eliminarCliente = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const clienteEliminado = await clientesModel.eliminarCliente(id);
+    res.json(clienteEliminado);
+  } catch (error) {
+    console.error("Error eliminando cliente:", error);
+    res.status(500).json({ error: "Error al eliminar cliente" });
+  }
+};

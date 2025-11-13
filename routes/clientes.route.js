@@ -11,4 +11,7 @@ router.post("/clientes", controller.crearCliente);
 
 // PUT /clientes/:id -> controller
 router.put("/clientes/:id", controller.actualizarCliente);
+
+// DELETE /clientes/:id -> controller
+router.delete("/clientes/:id", controller.eliminarCliente);
 export default router;

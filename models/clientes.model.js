@@ -21,9 +21,18 @@ export const consultarClientes = async () => {
   return result.rows;
 };
 
+// Actualizar un cliente
 export const actualizarCliente = async (nombre, email, id) => {
   const consulta = "UPDATE clientes SET nombre = $1, email = $2 WHERE id = $3 ";
   const values = [nombre, email, id];
+  const result = await pool.query(consulta, values);
+  return result.rows[0];
+};
+
+// Eliminar un cliente
+export const eliminarCliente = async (id) => {
+  const consulta = "DELETE FROM clientes WHERE id = $1";
+  const values = [id];
   const result = await pool.query(consulta, values);
   return result.rows[0];
 };
