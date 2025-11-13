@@ -9,4 +9,6 @@ router.get("/clientes", controller.consultarClientes);
 // POST /clientes -> controller
 router.post("/clientes", controller.crearCliente);
 
+// PUT /clientes/:id -> controller
+router.put("/clientes/:id", controller.actualizarCliente);
 export default router;

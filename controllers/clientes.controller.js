@@ -32,4 +32,20 @@ export const crearCliente = async (req, res) => {
   }
 };
 
-// PUT /clientes/:id -> controller
+// PUT /clientes/:id ->
+export const actualizarCliente = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { nombre, email } = req.body;
+
+    const clienteActualizado = await clientesModel.actualizarCliente(
+      nombre,
+      email,
+      id
+    );
+    res.json(clienteActualizado);
+  } catch (error) {
+    console.error("Error actualizando cliente:", error);
+    res.status(500).json({ error: "Error al actualizar cliente" });
+  }
+};

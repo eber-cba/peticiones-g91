@@ -20,3 +20,10 @@ export const consultarClientes = async () => {
   const result = await pool.query("SELECT * FROM clientes");
   return result.rows;
 };
+
+export const actualizarCliente = async (nombre, email, id) => {
+  const consulta = "UPDATE clientes SET nombre = $1, email = $2 WHERE id = $3 ";
+  const values = [nombre, email, id];
+  const result = await pool.query(consulta, values);
+  return result.rows[0];
+};
