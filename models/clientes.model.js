@@ -1,4 +1,5 @@
 import pool from "../config/db.js";
+import format from "pg-format";
 
 // Obtener la fecha actual
 export const getDate = async () => {
