@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch config/server.js config/server.js"
+    "dev": "nodemon config/server.js"
   },
   "keywords": [],
   "author": "",

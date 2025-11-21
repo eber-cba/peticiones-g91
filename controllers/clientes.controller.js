@@ -61,3 +61,28 @@ export const eliminarCliente = async (req, res) => {
     res.status(500).json({ error: "Error al eliminar cliente" });
   }
 };
+// GET /clientes/limit?limit=X -> controller
+export const consultarClientesLimit = async (req, res) => {
+  try {
+    const { limit } = req.query; // Obtener el límite desde los query parameters
+    const clientes = await clientesModel.consultarClientesLimit(limit);
+    res.json(clientes);
+  } catch (error) {
+    console.error("Error consultando clientes:", error);
+    res.status(500).json({ error: "Error al consultar clientes" });
+  }
+};
+// GET /clientes/limit-orderby?limit=X&order_by=Y -> controller
+export const consultarClientesLimitOrderBy = async (req, res) => {
+  try {
+    const { limit, order_by } = req.query; // Obtener el límite y order_by desde los query parameters
+    const clientes = await clientesModel.consultarClientesLimitOrderBy({
+      limit,
+      order_by,
+    });
+    res.json(clientes);
+  } catch (error) {
+    console.error("Error consultando clientes:", error);
+    res.status(500).json({ error: "Error al consultar clientes" });
+  }
+};

@@ -37,3 +37,24 @@ export const eliminarCliente = async (id) => {
   const result = await pool.query(consulta, values);
   return result.rows[0];
 };
+// consulta con limit
+export const consultarClientesLimit = async (limit) => {
+  const consulta = "SELECT * FROM clientes LIMIT $1";
+  const result = await pool.query(consulta, [limit]);
+  return result.rows;
+};
+// consulta con limit y order_by
+
+export const consultarClientesLimitOrderBy = async ({
+  limit = 10,
+  order_by = "id_ASC",
+}) => {
+  const [nombre] = order_by.split("_"); // un destructuring de un array para obtener el nombre de la columna
+  const formattedQuery = format(
+    "SELECT * FROM clientes order by %s LIMIT %s",
+    nombre,
+    limit
+  );
+  const { rows: clientes } = await pool.query(formattedQuery);
+  return clientes;
+};

@@ -3,6 +3,12 @@ import * as controller from "../controllers/clientes.controller.js";
 
 const router = express.Router();
 
+// GET /clientes/limit-orderby?limit=X&order_by=Y -> controller
+router.get("/clientes/limit-orderby", controller.consultarClientesLimitOrderBy);
+
+// GET /clientes/limit?limit=X -> controller
+router.get("/clientes/limit", controller.consultarClientesLimit);
+
 // GET /clientes -> controller
 router.get("/clientes", controller.consultarClientes);
 
